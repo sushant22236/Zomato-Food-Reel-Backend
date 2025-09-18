@@ -11,8 +11,8 @@ const upload = multer({
 });
 
 router.post('/add-food', 
-    authenticateFoodPartner, 
     upload.single('video'), 
+    authenticateFoodPartner, 
     createFood
 );
 export default router;
