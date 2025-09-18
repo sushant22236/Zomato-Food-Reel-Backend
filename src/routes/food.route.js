@@ -1,6 +1,6 @@
 import express from 'express';
-import { authenticateFoodPartner } from '../middlewares/auth.middleware.js';
-import { createFood } from '../controllers/food.controller.js';
+import { authenticateFoodPartner, authenticateUser } from '../middlewares/auth.middleware.js';
+import { createFood, getAllFoods } from '../controllers/food.controller.js';
 
 import multer from 'multer';
 
@@ -15,6 +15,10 @@ router.post('/add-food',
     authenticateFoodPartner, 
     createFood
 );
+
+router.get('/get-food', authenticateUser, getAllFoods)
+
+
 export default router;
 
 
