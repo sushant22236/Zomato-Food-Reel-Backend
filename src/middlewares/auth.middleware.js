@@ -45,13 +45,15 @@ export  const authenticateUser = async (req, res, next) => {
 
         const user = await userModel.findById(decoded.id);
 
-        console.log(user);
+        // console.log(user);
 
-        if(!user){
-            return res.status(401).json({success: false, message: "not getting user"});
-        }
+        // if(!user){
+        //     return res.status(401).json({success: false, message: "not getting user"});
+        // }
 
         req.user = user;
+
+        console.log(req.user);
 
         next();
 
