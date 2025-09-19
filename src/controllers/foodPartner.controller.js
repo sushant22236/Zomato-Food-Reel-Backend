@@ -43,7 +43,10 @@ export const registerFoodPartner = async (req, res) => {
             foodPartner:{ 
                 id: FoodPartner._id,
                 name: FoodPartner.name, 
-                email: FoodPartner.email 
+                email: FoodPartner.email,
+                contactName: FoodPartner.contactName,
+                phone: FoodPartner.phone,
+                address: FoodPartner.address
             }, 
         });
     } catch (error) {
