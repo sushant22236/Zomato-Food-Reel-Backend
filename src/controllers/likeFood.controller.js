@@ -87,3 +87,29 @@ export const savedFood = async (req, res) => {
         saved: saved
     });
 }
+
+export const getSavedFoods = async (req, res) => {
+    const user = req.user;
+
+    try {
+        const savedFoods = await savedModel.find({ user: user._id }).populate('food');
+
+        if (!savedFoods || savedFoods.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "No saved foods found",
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "Saved foods retrieved successfully",
+            savedFoods: savedFoods
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error"
+        });
+    }
+}

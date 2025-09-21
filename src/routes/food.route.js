@@ -4,6 +4,7 @@ import { createFood, getAllFoods } from '../controllers/food.controller.js';
 import { getFoodPartnerById } from '../controllers/getFoodPartnerById.js';
 import { likeFood } from '../controllers/likeFood.controller.js';
 import { savedFood } from '../controllers/likeFood.controller.js';
+import { getSavedFoods } from '../controllers/likeFood.controller.js';
 
 import multer from 'multer';
 
@@ -26,6 +27,8 @@ router.get('/food-partner/:id', authenticateFoodPartner, getFoodPartnerById);
 router.post('/like', authenticateUser, likeFood);
 
 router.post('/save', authenticateUser, savedFood);
+
+router.get('/get-save', authenticateUser, getSavedFoods);
 
 export default router;
 
