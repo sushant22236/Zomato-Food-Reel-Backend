@@ -6,11 +6,8 @@ import foodroute from "./routes/food.route.js";
 import cors from "cors";
 
 const app = express();
-app.use(cors({
-  origin: "*", // or replace "*" with your frontend cloudflared URL
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+app.use(express.json());
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
 connectDB();
 

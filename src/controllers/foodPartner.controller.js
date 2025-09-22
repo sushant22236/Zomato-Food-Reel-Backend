@@ -4,9 +4,9 @@ import jwt from "jsonwebtoken";
 import { config } from "../config/env.js";
 
 export const registerFoodPartner = async (req, res) => {
-    const {name, email, password, contactName, phone, address} = req.body;
+    const {businessName, email, password, contactName, phone, address} = req.body;
 
-    if(!name || !email || !password || !contactName || !phone || !address){
+    if(!businessName || !email || !password || !contactName || !phone || !address){
         return res.status(400).json({success: false, message: "All fields are required"});
     }
 
@@ -21,7 +21,7 @@ export const registerFoodPartner = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const FoodPartner = new foodPartner({
-            name,
+            businessName,
             email,
             password: hashedPassword,
             contactName,
@@ -42,7 +42,7 @@ export const registerFoodPartner = async (req, res) => {
         return res.status(201).json({success: true, message: "Food Partner registered successfully",  
             foodPartner:{ 
                 id: FoodPartner._id,
-                name: FoodPartner.name, 
+                businessName: FoodPartner.businessName, 
                 email: FoodPartner.email,
                 contactName: FoodPartner.contactName,
                 phone: FoodPartner.phone,

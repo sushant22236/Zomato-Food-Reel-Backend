@@ -41,8 +41,6 @@ export  const authenticateUser = async (req, res, next) => {
 
         const decoded = jwt.verify(token, config.Jwt_secret);
 
-        console.log(decoded);
-
         const user = await userModel.findById(decoded.id);
 
         // console.log(user);
@@ -53,7 +51,6 @@ export  const authenticateUser = async (req, res, next) => {
 
         req.user = user;
 
-        console.log(req.user);
 
         next();
 
